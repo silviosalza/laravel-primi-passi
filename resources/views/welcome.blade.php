@@ -15,7 +15,36 @@
             }
         </style>
     </head>
-    <body class="antialiased">
-        <h1>Hello Olga, Paolo and Roberto</h1>
+    <body>
+        <h1>{{ $title }}</h1>
+        <h2>Studendi:</h2>
+        <ul>
+            @foreach ($students as $student)
+            <li>{{$student}}
+                @if($loop ->last)
+                    .
+                @else
+                    ,
+                @endif</li>
+            @endforeach
+        </ul>
+
+        <h2>Insegnanti</h2>
+
+        @if (count($teachers) === 0)
+        <h3>Non ci sono insegnanti assegnati</h3>
+
+        @else
+        <ul>
+            @foreach($teachers as $teacher)
+            <li>
+                {{$teacher}}
+            </li>
+            @endforeach
+        </ul>
+                 
+        @endif
+
+        <a href="/about">About link</a>
     </body>
 </html>
